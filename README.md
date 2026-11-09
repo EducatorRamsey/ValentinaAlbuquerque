@@ -25,3 +25,7 @@ Open http://localhost:8080.
 ## Files
 
 `dist/explore.js` contains original canvas art, animation, collision, tap pathfinding, dialogue, clues, notebook, and persistent state. `dist/explore.css` handles responsive presentation; `dist/index.html` is the minimal game shell. `.openai/hosting.json` identifies the existing private Sites deployment.
+
+## Turn-based apprehension prototype
+
+After identifying Lisbon, speak to the travel clerk to confront Albuquerque's lookout. Existing completed London saves can start the encounter the same way. Four contextual actions appear only during the encounter: Restrain, Evade, Use evidence, and Talk down. Intent cues explain the next move. Restrain succeeds at resolve 2 or lower; reducing resolve to zero causes surrender. Physical evidence is stronger than testimony and each clue can be used once per attempt. Evading a rush lowers resolve and restores stamina. Failure after five turns or zero stamina costs three case hours and allows a retry. Progress and used evidence persist across reloads. Escape pauses the encounter; return to the clerk to resume. Successful apprehension adds the statement to the notebook.
