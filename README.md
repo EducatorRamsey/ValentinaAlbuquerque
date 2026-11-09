@@ -1,26 +1,27 @@
 # The Albuquerque Files
 
-An original, retro-modern geography detective game. Episode 01: **The Missing Sky**.
+A retro-modern geography detective game. The current prototype is an explorable London district for **The Missing Sky**.
 
-## Play locally
+## Run
 
-No build step or dependencies are required. Serve the `dist` directory:
+No dependencies or build step:
 
 ```sh
 python3 -m http.server 8080 --directory dist
 ```
 
-Open http://localhost:8080. Progress saves in browser localStorage.
+Open http://localhost:8080.
 
-## Gameplay
+## Play
 
-Follow witness clues from London through Lisbon and Cairo to Jaipur. Investigations and flights advance the 72-hour clock. Collect identifying evidence, match a suspect dossier, request a warrant, confirm the courier's final location, and make an arrest. Wrong destinations consume time but allow recovery. Includes success, wrong-arrest, and timeout endings and case restart.
+- Move with WASD or arrow keys, or click/tap the ground. Tap routes navigate around buildings and the fountain.
+- Approach a witness or searchable object and press E, or use the contextual interaction button. Nearby characters can also be clicked/tapped.
+- Press N or select Notebook to review automatically recorded evidence.
+- Question the guard, inspect the packing crate, speak to the café owner, and search near the fountain. Use your evidence to answer the travel clerk's geography question.
+- Movement is free. Each new clue costs two case hours. Wrong answers provide feedback and allow another attempt.
+- The prototype ends with the correct London deduction; Lisbon exploration is not implemented yet. You can continue exploring London afterward.
+- Progress saves in browser localStorage, separately from the original case. Original dashboard files remain at `classic.html` for development reference.
 
-## Structure
+## Files
 
-- `dist/index.html` — accessible application shell
-- `dist/style.css` — responsive terminal-inspired visual design
-- `dist/game.js` — case data, original SVG city illustrations, state and interactions
-- `.openai/hosting.json` — private Sites deployment configuration
-
-All illustrations and narrative were created for this game. Travel times are simplified game mechanics. This is the first complete case, not yet a multi-case campaign.
+`dist/explore.js` contains original canvas art, animation, collision, tap pathfinding, dialogue, clues, notebook, and persistent state. `dist/explore.css` handles responsive presentation; `dist/index.html` is the minimal game shell. `.openai/hosting.json` identifies the existing private Sites deployment.
