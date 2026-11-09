@@ -1,0 +1,30 @@
+name: Publish game to GitHub Pages
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'dist/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish static game
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd dist
+          touch .nojekyll
+          git init -b gh-pages
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m 'Publish game'
+          git -c http.extraHeader="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)" push --force "https://github.com/${GITHUB_REPOSITORY}.git" HEAD:gh-pages
